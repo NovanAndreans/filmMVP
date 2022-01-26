@@ -6,10 +6,10 @@ import 'package:coba_mvp/views/cobaView.dart';
 import 'package:flutter/material.dart';
 
 class edit_film extends StatelessWidget implements detailFilmContract{
-  final String id;
-  edit_film({required this.id, Key? key}) : super(key: key) {
+  String id;
+  edit_film({required this.id}) {
     EditPresenter _cobaPresenter = EditPresenter();
-    _cobaPresenter.setDetailContract = this;
+    _cobaPresenter.DetailContract = this;
     _cobaPresenter.loadDataDetail(id);
   }
   EditPresenter _cobaPresenter = EditPresenter();
@@ -87,11 +87,12 @@ class edit_film extends StatelessWidget implements detailFilmContract{
                     ElevatedButton(
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
+                          String idd = id;
                           String title = _titCont.text;
                           String synop = _synCont.text;
                           String cover = _covCont.text;
                           _cobaPresenter.edit(
-                            id,
+                            idd,
                               title,
                               synop,
                               cover);
@@ -107,7 +108,10 @@ class edit_film extends StatelessWidget implements detailFilmContract{
         
                         // }
                       },
-                      child: Text("Save")),
+                      child: Text("Update")),
+                      SizedBox(
+                      height: 30,
+                    ),
               ],
             ),
           ),

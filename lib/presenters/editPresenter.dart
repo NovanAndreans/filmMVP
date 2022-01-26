@@ -21,8 +21,7 @@ class EditPresenter {
         );
   }
 
-  void edit(String id, String? title, String? cover,
-      String? synop) {
+  void edit(id, title, cover, synop) {
     _detailFilmContract.onEditStart();
     _cobaService
         .editFilm(id, title, cover, synop)
@@ -37,7 +36,7 @@ class EditPresenter {
     );
   }
 
-  set setDetailContract(detailFilmContract detailFilmContract) {
+  set DetailContract(detailFilmContract detailFilmContract) {
     _detailFilmContract = detailFilmContract;
   }
 

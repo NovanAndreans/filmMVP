@@ -15,13 +15,11 @@ class CobaView extends StatefulWidget {
 }
 
 class _CobaViewState extends State<CobaView> implements CobaContract {
-  CobaPresenter cobaPresenter = CobaPresenter();
-  // final productPresenter = Get.find<deletePresenter>();
-  // deletePresenter _deletePresenter = deletePresenter();
+  CobaPresenter _cobaPresenter = CobaPresenter();
 
   _CobaViewState() {
-    cobaPresenter.cobaContract = this;
-    cobaPresenter.loadData();
+    _cobaPresenter.cobaContract = this;
+    _cobaPresenter.loadData();
   }
 
   List<Coba> data = [];                                   //Model [<Coba>]
@@ -91,7 +89,7 @@ class _CobaViewState extends State<CobaView> implements CobaContract {
                                             
                                         GestureDetector(
                                             // onTap: () {
-                                            //   productPresenter.deleteFilm(film.id.toString())
+                                            //   _cobaPresenter.deleteFilm(film.id.toString())
                                             //       .then((value) => {
                                             //             setState(() {}),
                                             //             ScaffoldMessenger.of(

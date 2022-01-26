@@ -1,5 +1,7 @@
+import 'package:coba_mvp/contract/detailFilmContract.dart';
 import 'package:coba_mvp/models/CobaModel.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'edit_film.dart';
 
@@ -10,8 +12,8 @@ class detailFilms extends StatefulWidget {
   _detailFilmsState createState() => _detailFilmsState();
 }
 
-class _detailFilmsState extends State<detailFilms> {
-
+class _detailFilmsState extends State<detailFilms> implements detailFilmContract{
+  Rx<Coba>? _film;
   // final int? id;
 
  @override
@@ -78,7 +80,28 @@ class _detailFilmsState extends State<detailFilms> {
 
   @override
   void onFetchSuccess(Coba coba) {
-    // TODO: implement onFetchSucess
-    // _film!.value = coba;
+    setState(() {
+      _film!.value = coba;
+    });
+  }
+
+  @override
+  void onEditFailed(String message) {
+    // TODO: implement onEditFailed
+  }
+
+  @override
+  void onEditStart() {
+    // TODO: implement onEditStart
+  }
+
+  @override
+  void onEditSuccess(String message) {
+    // TODO: implement onEditSuccess
+  }
+
+  @override
+  void onFetchStart() {
+    // TODO: implement onFetchStart
   }
 }

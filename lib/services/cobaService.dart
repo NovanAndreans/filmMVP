@@ -44,9 +44,11 @@ class CobaService {
     return jsonDecode(response.body);
   }
 
-  Future<Coba> findProduct(String id) async {
-    var request = await http.get(Uri.parse("http://10.21.1.209/laravel/film/api/film/" + id));
-    Map<String, dynamic> result = jsonDecode(request.body);
+  Future<Coba> findProduct(id) async {
+    var request = await http.get(Uri.parse("http://10.21.1.209/laravel/film/api/film/${id}"));
+    var tes = "http://10.21.1.209/laravel/film/api/film/${id}";
+    print(tes);
+    Map<String, dynamic> result = jsonDecode(request.body)['data'];
  
     return Coba.fromJson(result);
   }
