@@ -6,7 +6,7 @@ import 'package:coba_mvp/services/cobaService.dart';
 
 class EditPresenter {
   CobaService _cobaService = CobaService();
-  late detailFilmContract _detailFilmContract;
+  late DetailFilmContract _detailFilmContract;
 
   void loadDataDetail(String id) {
     _detailFilmContract.onFetchStart();
@@ -21,7 +21,8 @@ class EditPresenter {
         );
   }
 
-  void edit(id, title, cover, synop) {
+  void edit(String id, String? title, String? cover,
+      String? synop) {
     _detailFilmContract.onEditStart();
     _cobaService
         .editFilm(id, title, cover, synop)
@@ -35,8 +36,8 @@ class EditPresenter {
       },
     );
   }
-
-  set DetailContract(detailFilmContract detailFilmContract) {
+  
+  set DetailContract(DetailFilmContract detailFilmContract) {
     _detailFilmContract = detailFilmContract;
   }
 

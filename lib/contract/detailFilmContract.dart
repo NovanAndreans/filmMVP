@@ -1,6 +1,6 @@
 import 'package:coba_mvp/models/CobaModel.dart';
 
-abstract class detailFilmContract {
+abstract class DetailFilmContract {
   void onFetchStart();
   void onFetchSuccess(Coba coba);
   void onFetchFailed(String message);

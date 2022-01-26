@@ -1,7 +1,6 @@
 import 'package:coba_mvp/contract/cobaContract.dart';
 import 'package:coba_mvp/models/CobaModel.dart';
 import 'package:coba_mvp/presenters/cobaPresenter.dart';
-import 'package:coba_mvp/presenters/deletePresenter.dart';
 import 'package:coba_mvp/views/detailFilm.dart';
 import 'package:coba_mvp/views/edit_film.dart';
 import 'package:coba_mvp/views/tambahFilm.dart';
@@ -15,13 +14,13 @@ class CobaView extends StatefulWidget {
 }
 
 class _CobaViewState extends State<CobaView> implements CobaContract {
+  // final _cbPresenter = Get.find<CobaPresenter>();
   CobaPresenter _cobaPresenter = CobaPresenter();
 
   _CobaViewState() {
     _cobaPresenter.cobaContract = this;
     _cobaPresenter.loadData();
   }
-
   List<Coba> data = [];                                   //Model [<Coba>]
 
   @override
@@ -73,37 +72,37 @@ class _CobaViewState extends State<CobaView> implements CobaContract {
                       child: Text(film.title.toString(), 
                       style: TextStyle(fontSize: 20.0,
                       fontWeight: FontWeight.bold),)),
-                      Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
-                                      children: [
-                                        GestureDetector(
-                                            onTap: () {
-                                              Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          edit_film(id: film.id.toString())));
-                                            },
-                                            child: Icon(Icons.edit)),
+                      // Row(
+                      //                 mainAxisAlignment:
+                      //                     MainAxisAlignment.spaceAround,
+                      //                 children: [
+                      //                   GestureDetector(
+                      //                       onTap: () {
+                      //                         Navigator.push(
+                      //                             context,
+                      //                             MaterialPageRoute(
+                      //                                 builder: (context) =>
+                      //                                     edit_film(id: film.id.toString())));
+                      //                       },
+                      //                       child: Icon(Icons.edit)),
                                             
-                                        GestureDetector(
-                                            // onTap: () {
-                                            //   _cobaPresenter.deleteFilm(film.id.toString())
-                                            //       .then((value) => {
-                                            //             setState(() {}),
-                                            //             ScaffoldMessenger.of(
-                                            //                     context)
-                                            //                 .showSnackBar(
-                                            //                     SnackBar(
-                                            //               content: Text(
-                                            //                   "Data berhasil Dihapus"),
-                                            //             ))
-                                            //           });
-                                            // },
-                                            child: Icon(Icons.delete)),
-                                      ],
-                                    ),SizedBox(height: 10)
+                      //                   GestureDetector(
+                      //                       onTap: () {
+                      //                         _cbPresenter.deleteFilm(film.id.toString())
+                      //                             .then((value) => {
+                      //                                   setState(() {}),
+                      //                                   ScaffoldMessenger.of(
+                      //                                           context)
+                      //                                       .showSnackBar(
+                      //                                           SnackBar(
+                      //                                     content: Text(
+                      //                                         "Data berhasil Dihapus"),
+                      //                                   ))
+                      //                                 });
+                      //                       },
+                      //                       child: Icon(Icons.delete)),
+                      //                 ],
+                      //               ),SizedBox(height: 10)
                       ],
                   )),
             );

@@ -3,11 +3,12 @@ import 'package:coba_mvp/contract/detailFilmContract.dart';
 import 'package:coba_mvp/contract/addFilmContract.dart';
 import 'package:coba_mvp/models/CobaModel.dart';
 import 'package:coba_mvp/services/cobaService.dart';
+import 'package:get/get.dart';
 
-class CobaPresenter {
+class CobaPresenter extends GetxController {
   CobaService _cobaService = CobaService();
   late CobaContract _cobaContract;
-  late detailFilmContract _detailFilmContract;
+  late DetailFilmContract _detailFilmContract;
 
   void loadData() async {
     _cobaService
@@ -47,7 +48,7 @@ void deleteFilm(String id) async {
     _cobaContract = cobaContract;
   }
 
-  set setDetailContract(detailFilmContract detailFilmContract) {
+  set setDetailContract(DetailFilmContract detailFilmContract) {
     _detailFilmContract = detailFilmContract;
   }
 }

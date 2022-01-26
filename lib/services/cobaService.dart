@@ -17,20 +17,16 @@ class CobaService {
     return coba;
   }
 
-  Future<Map> editFilm(String id, String? title, String? cover,
+  Future editFilm(String id, String? title, String? cover,
       String? synop) async {
-    Map<String, String> data = {};
-    if (title != null) {
-      data['product_name'] = title;
-    }
-    if (cover != null) {
-      data['product_price'] = cover;
-    }
-    if (synop != null) {
-      data['product_description'] = synop;
-    }
+    final response = await http.put(
+        Uri.parse("http://10.21.1.209/laravel/film/api/film/${id}"), body: {
+      "film_title": title,
+      "film_cover": cover,
+      "film_syn": synop,
+    });
 
-    var response = await http.put(Uri.parse("http://10.21.1.209/laravel/film/api/film/" + id));
+        print("http://10.21.1.209/laravel/film/api/film/${id}");
     return jsonDecode(response.body);
   }
 
@@ -46,8 +42,6 @@ class CobaService {
 
   Future<Coba> findProduct(id) async {
     var request = await http.get(Uri.parse("http://10.21.1.209/laravel/film/api/film/${id}"));
-    var tes = "http://10.21.1.209/laravel/film/api/film/${id}";
-    print(tes);
     Map<String, dynamic> result = jsonDecode(request.body)['data'];
  
     return Coba.fromJson(result);

@@ -3,7 +3,7 @@ import 'package:coba_mvp/services/cobaService.dart';
 
 class DetailPresenter {
   CobaService _cobaService = CobaService();
-  late detailFilmContract _detailFilmContract;
+  late DetailFilmContract _detailFilmContract;
 
   void loadDataDetail(String id) {
     _cobaService
@@ -17,7 +17,7 @@ class DetailPresenter {
         );
   }
 
-  set setDetailContract(detailFilmContract detailFilmContract) {
+  set setDetailContract(DetailFilmContract detailFilmContract) {
     _detailFilmContract = detailFilmContract;
   }
 }

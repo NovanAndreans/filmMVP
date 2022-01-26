@@ -5,7 +5,7 @@ import 'package:coba_mvp/views/edit_film.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class detail_film extends StatelessWidget implements detailFilmContract{
+class detail_film extends StatelessWidget implements DetailFilmContract{
   final String id;
   detail_film({required this.id, Key? key}) : super(key: key) {
     CobaPresenter _cobaPresenter = CobaPresenter();

@@ -12,7 +12,7 @@ class detailFilms extends StatefulWidget {
   _detailFilmsState createState() => _detailFilmsState();
 }
 
-class _detailFilmsState extends State<detailFilms> implements detailFilmContract{
+class _detailFilmsState extends State<detailFilms> implements DetailFilmContract{
   Rx<Coba>? _film;
   // final int? id;
 

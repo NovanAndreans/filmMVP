@@ -5,8 +5,9 @@ import 'package:coba_mvp/presenters/editPresenter.dart';
 import 'package:coba_mvp/views/cobaView.dart';
 import 'package:flutter/material.dart';
 
-class edit_film extends StatelessWidget implements detailFilmContract{
+class edit_film extends StatelessWidget implements DetailFilmContract{
   String id;
+  
   edit_film({required this.id}) {
     EditPresenter _cobaPresenter = EditPresenter();
     _cobaPresenter.DetailContract = this;
@@ -87,15 +88,15 @@ class edit_film extends StatelessWidget implements detailFilmContract{
                     ElevatedButton(
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          String idd = id;
+                          _cobaPresenter.DetailContract = this;
                           String title = _titCont.text;
                           String synop = _synCont.text;
                           String cover = _covCont.text;
                           _cobaPresenter.edit(
-                            idd,
+                            id,
                               title,
-                              synop,
-                              cover);
+                              cover,
+                              synop);
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -128,7 +129,6 @@ class edit_film extends StatelessWidget implements detailFilmContract{
   @override
   void onFetchSuccess(Coba coba) {
     // TODO: implement onFetchSuccess
-    print(id);
     _titCont.text = coba.title ?? "rusak";
     _synCont.text = coba.syno ?? "rusak";
     _covCont.text = coba.cover ?? "rusak";
@@ -143,6 +143,7 @@ class edit_film extends StatelessWidget implements detailFilmContract{
   @override
   void onEditFailed(String message) {
     // TODO: implement onEditFailed
+    print(message);
   }
 
   @override
