@@ -81,6 +81,7 @@ class tambah_film extends StatelessWidget implements addFilmContract{
                     ElevatedButton(
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
+                          _addPresenter.addfilmContract = this;
                           String title = titCont.text;
                           String synop = synCont.text;
                           String cover = covCont.text;
@@ -93,7 +94,7 @@ class tambah_film extends StatelessWidget implements addFilmContract{
                                 MaterialPageRoute(
                                     builder: (context) => CobaView()));
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                              content: Text("Data berhasil Ditambahkan"),
+                              content: Text("Data berhasil Ditambahkan")
                             ));
                         }
                         // else {

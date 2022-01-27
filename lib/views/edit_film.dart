@@ -97,10 +97,7 @@ class edit_film extends StatelessWidget implements DetailFilmContract{
                               title,
                               cover,
                               synop);
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => CobaView()));
+                            Navigator.push(context,MaterialPageRoute(builder: (context) => CobaView()));
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                               content: Text("Data berhasil Diperbarui"),
                             ));
@@ -154,5 +151,6 @@ class edit_film extends StatelessWidget implements DetailFilmContract{
   @override
   void onEditSuccess(String message) {
     // TODO: implement onEditSuccess
+    
   }
 }

@@ -14,12 +14,12 @@ class CobaView extends StatefulWidget {
 }
 
 class _CobaViewState extends State<CobaView> implements CobaContract {
-  // final _cbPresenter = Get.find<CobaPresenter>();
-  CobaPresenter _cobaPresenter = CobaPresenter();
+  // final cobaPresenter = Get.find<CobaPresenter>();
+  CobaPresenter cobaPresenter = CobaPresenter();
 
   _CobaViewState() {
-    _cobaPresenter.cobaContract = this;
-    _cobaPresenter.loadData();
+    cobaPresenter.cobaContract = this;
+    cobaPresenter.loadData();
   }
   List<Coba> data = [];                                   //Model [<Coba>]
 
@@ -72,37 +72,28 @@ class _CobaViewState extends State<CobaView> implements CobaContract {
                       child: Text(film.title.toString(), 
                       style: TextStyle(fontSize: 20.0,
                       fontWeight: FontWeight.bold),)),
-                      // Row(
-                      //                 mainAxisAlignment:
-                      //                     MainAxisAlignment.spaceAround,
-                      //                 children: [
-                      //                   GestureDetector(
-                      //                       onTap: () {
-                      //                         Navigator.push(
-                      //                             context,
-                      //                             MaterialPageRoute(
-                      //                                 builder: (context) =>
-                      //                                     edit_film(id: film.id.toString())));
-                      //                       },
-                      //                       child: Icon(Icons.edit)),
+                      Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      children: [
+                                        GestureDetector(
+                                            onTap: () {
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          edit_film(id: film.id.toString())));
+                                            },
+                                            child: Icon(Icons.edit)),
                                             
-                      //                   GestureDetector(
-                      //                       onTap: () {
-                      //                         _cbPresenter.deleteFilm(film.id.toString())
-                      //                             .then((value) => {
-                      //                                   setState(() {}),
-                      //                                   ScaffoldMessenger.of(
-                      //                                           context)
-                      //                                       .showSnackBar(
-                      //                                           SnackBar(
-                      //                                     content: Text(
-                      //                                         "Data berhasil Dihapus"),
-                      //                                   ))
-                      //                                 });
-                      //                       },
-                      //                       child: Icon(Icons.delete)),
-                      //                 ],
-                      //               ),SizedBox(height: 10)
+                                        GestureDetector(
+                                            onTap: () {
+                                              cobaPresenter.deleteFilm(film.id.toString());
+                                                        
+                                            },
+                                            child: Icon(Icons.delete)),
+                                      ],
+                                    ),SizedBox(height: 10)
                       ],
                   )),
             );
@@ -134,5 +125,10 @@ class _CobaViewState extends State<CobaView> implements CobaContract {
   @override
   void onDeleteSuccess(String message) {
     // TODO: implement onDeleteSuccess
+    setState(() {
+      Navigator.push(context,MaterialPageRoute(builder: (context) => CobaView()));
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Data berhasil Dihapus")));
+    });
+    
   }
 } 
